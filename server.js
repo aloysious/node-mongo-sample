@@ -1,6 +1,6 @@
 var express = require('express');
 var moment = require('moment');
-var mongoose = require('mongoose');
+//var mongoose = require('mongoose');
 
 // Constants
 var PORT = 80;
@@ -9,19 +9,20 @@ var PORT = 80;
 var app = express();
 
 
-var port = process.env.MONGODB_PORT_27017_TCP_PORT;
-var addr = process.env.MONGODB_PORT_27017_TCP_ADDR;
-var instance = process.env.MONGODB_INSTANCE_NAME;
-var password = process.env.MONGODB_PASSWORD;
-var username = process.env.MONGODB_USERNAME;
+//var port = process.env.MONGODB_PORT_27017_TCP_PORT;
+//var addr = process.env.MONGODB_PORT_27017_TCP_ADDR;
+//var instance = process.env.MONGODB_INSTANCE_NAME;
+//var password = process.env.MONGODB_PASSWORD;
+//var username = process.env.MONGODB_USERNAME;
 
 // 'mongodb://user:pass@localhost:port/database'
-mongoose.connect('mongodb://' + username + ':' + password +'@' + addr + ':' + port + '/' + instance);
-var Records = mongoose.model('Records', { name: {type: String, default:'any'}, time: {type: Date, default: Date.now} });
+//mongoose.connect('mongodb://' + username + ':' + password +'@' + addr + ':' + port + '/' + instance);
+//var Records = mongoose.model('Records', { name: {type: String, default:'any'}, time: {type: Date, default: Date.now} });
 
 app.get('/', function (req, res) {
   //res.send('Hello world\n');
 
+	/*
   var record = new Records({ name: req.ip });
   record.save(function (err) {
     if (err) {
@@ -42,9 +43,12 @@ app.get('/', function (req, res) {
       res.send(out);
     }
   });
+	*/
+ res.send('hello docker');
 
 });
 
+/*
 app.get('/drop', function (req, res) {
   Records.remove({}, function(err) {
     if(err) {
@@ -56,6 +60,7 @@ app.get('/drop', function (req, res) {
     }
   });
 });
+*/
 
 app.listen(PORT);
 console.log('Running on http://localhost:' + PORT);
